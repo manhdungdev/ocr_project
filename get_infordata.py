@@ -1,12 +1,13 @@
-import cv2
+import cv2 #Thư viện OpenCV dùng cho xử lý hình ảnh.
 import numpy as np
-import pytesseract
+import pytesseract #Thư viện dùng để nhận diện văn bản trong hình ảnh.
 from pytesseract import Output
 
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-def boundingBox(result, img, i, color=(255, 100, 0)):
+# Hàm này vẽ một hình chữ nhật xung quanh văn bản được nhận diện
+def boundingBox(result, img, i, color=(255, 100, 0)): 
     x = result['left'][i]
     y = result['top'][i]
     w = result['width'][i]
@@ -16,7 +17,10 @@ def boundingBox(result, img, i, color=(255, 100, 0)):
 
     return x, y, img
 
+#Đọc hình ảnh từ đường dẫn chỉ định.
 img = cv2.imread("training/Images/test01.jpg")
+
+#Chuyển hình ảnh sang không gian màu RGB
 rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 cv2.imshow("Img", rgb)
 result = pytesseract.image_to_data(rgb, lang="eng", output_type=Output.DICT)
