@@ -6,7 +6,7 @@ def display (im_path):
     dpi = 80 
     im_data = plt.imread(im_path)
 
-    height, width = im_data.shape[:2]
+    height, width, depth = im_data.shape
 
     figsize = width / float(dpi), height / float(dpi)
 
@@ -19,8 +19,8 @@ def display (im_path):
 
     plt.show()
 
-new = cv2.imread("training/Images/page_01_rotated.jpg")
-#display("training/Images/page_01_rotated.jpg")
+#new = cv2.imread("training/Images/page_01_rotated.jpg")
+new = cv2.imread("training/Images/eng_para.jpg")
 
 def getSkewAngle(cvImage) -> float:
     newImage = cvImage.copy()
@@ -39,7 +39,7 @@ def getSkewAngle(cvImage) -> float:
         cv2.rectangle(newImage, (x,y), (x+w,y+h), (0,255,0),2)
 
     largestContour = contours[0]
-    print(len(contours))
+    #print(len(contours))
     minAreaRect = cv2.minAreaRect(largestContour)
     cv2.imwrite("training/temp/boxes.jpg", newImage)
     
@@ -60,9 +60,14 @@ def rotateImage(cvImage, angle: float):
 #Deskew image:
 def deskew(cvImage):
     angle = getSkewAngle(cvImage)
-    return rotateImage(cvImage, -1.0 * angle)
+    # Add a check to see if the angle is small enough to ignore
+    if angle <= -90:
+        return cvImage
+    else:
+        return rotateImage(cvImage, -1.0 * angle)
 
 fixed = deskew(new)
+print(getSkewAngle(new))
 cv2.imwrite("training/temp/rotated_fixed.jpg", fixed)
 
 display("training/temp/rotated_fixed.jpg")
