@@ -9,7 +9,7 @@ from PIL import ImageFont, ImageDraw, Image
 from wordcloud import WordCloud
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-direction = "../training/Images/Images1"
+direction = "training/Images/Images1"
 images = [os.path.join(direction, f) for f in os.listdir(direction)]
 print(images)
 
