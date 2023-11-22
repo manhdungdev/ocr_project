@@ -2,6 +2,7 @@ import cv2
 from matplotlib import pyplot as plt 
 import numpy as np
 
+
 def display (im_path):
     dpi = 80 
     im_data = plt.imread(im_path)

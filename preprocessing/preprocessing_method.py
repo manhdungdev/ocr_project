@@ -4,6 +4,8 @@ import pytesseract
 from pytesseract import Output
 
 
+
+
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 img1 = cv2.imread("../training/Images/page-book.jpg")
@@ -16,6 +18,7 @@ img7 = cv2.imread("../training/Images/img-process.jpg")
 img8 = cv2.imread("../training/Images/text-opencv.jpg")
 img9 = cv2.imread("../training/Images/text-opencv2.jpg")
 img10 = cv2.imread("../training/Images/test_noise.jpg")
+img11 = cv2.imread("../training/Images/example.png")
 def simpleThreshold(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     cv2.imshow("Origin", gray)
@@ -52,6 +55,8 @@ def adaptiveThresholdGaussian(img):
 
     adaptive_gaussian = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 9)
     cv2.imshow("Adaptive Gaussian", adaptive_gaussian)
+
+
     cv2.waitKey()
 
 def colorInversion(img):
@@ -130,6 +135,25 @@ def noiseRemoving(img):
 
     cv2.waitKey()
 
+def textExample(img):
+    cv2.imshow("Origin", img)
+
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    cv2.imshow("Origin gray", gray)
+
+    value, threshold = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+
+    cv2.imshow("Threshold Image", threshold)
+    invertor = 255 - threshold
+    cv2.imshow("Threshold Image Invertor", invertor)
+
+    text = pytesseract.image_to_string(invertor)
+    print(text)
+
+
+    cv2.waitKey()
+
+
 
 # simpleThreshold(img1)
 # simpleThreshold(img2)
@@ -141,4 +165,5 @@ def noiseRemoving(img):
 # dilation(img9)
 # opening(img8)
 # closing(img9)
-noiseRemoving(img10)
+# noiseRemoving(img10)
+textExample(img11)

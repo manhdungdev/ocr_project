@@ -1,0 +1,295 @@
+artigo_introducao_vc.jpg
+Tutorial: Introdução à Visão Computacional usando OpenCV
+
+A diferença entre a correlação e a convolução está na forma como a máscara é utilizada:
+na correlação a operação é feita conforme indicado na Figura 10, já na operação de
+convolução a máscara é rotacionada de 180 graus. Note que, se a máscara for simétrica as
+operações de correlação e convolução são idênticas. As expressões que definem estas duas
+operações são apresentadas nas equações 8 e 9.
+
+Correlação:
+mf nf2
+sG)= 5 Hft+iy+ wi) (8
+-m|2 j=-n/2
+Convolução:
+mf nf2 (9)
+gs )= 5 Hfl-iy- wi, j)
+mio soa
+
+onde w é a máscara utilizada no processo de correlação/convolução, e m e n são as
+dimensões da máscara. O tipo de filtro depende dos valores da máscara, no geral, as
+máscaras são simétricas e, portanto, pode-se aplicar tanto a convolução como a correlação.
+
+Posição (x, y) = (4, 4)
+
+Produto ponto a ponto
+Máscara 3x3
+573 121 (1x5) (2x7) (1x3)
+647 2402 (2x6) (4x4) (2x7)
+256 121 (1x2) (2x5) (1x6)
+Resultado da Correlação .
+Somatória
+“573 5+1443+12+16+1442410+6 =82
+. 6827
+.256
+
+Fig. 10: Esquema da operação de Correlação, no topo à esquerda a imagem, ao centro a máscara
+utilizada. No topo à direita a indicação dos produtos dos valores da máscara pelos valores dos pixels da
+imagem, ponto a ponto. Embaixo à direita a somatória dos valores multiplicados e, finalmente,
+embaixo à esquerda o novo valor do pixel na imagem após a correlação.
+
+Filtros Estatísticos
+
+Os filtros estatísticos são os filtros espaciais mais comuns, entre eles podemos citar o
+filtro de média, mediana, moda, mínimo e máximo. O filtro de média, também chamado de
+caixa-refrigerador.jpg
+REFRIGERATOR
+
+XONONMNBHMK TOMAS SOVUTGICH
+RÉFRIGERATEUR REFRIGERADOR — FRIGORIFERO
+KOHLSCHRANK FRIGORÍFICO LEMARIES
+
+Max 1700 bt
+Max 770 kg
+
+ebook_sistemasoperacionais.jpg
+Hardware de proteção
+
+Os primeiros computadores de grande porte, como o
+IBM 7090/7094, não tinham hardware de proteção, de
+maneira que eles executavam apenas um programa de
+cada vez. Um programa defeituoso poderia acabar com
+o sistema operacional e facilmente derrubar a máquina.
+
+Com a introdução do IBM 360, uma forma primitiva
+de proteção de hardware tornou-se disponivel. Essas
+máquinas podiam então armazenar vários programas na
+memória ao mesmo tempo e deixá-los que se altemas-
+
+sem na execução (multiprogramação). A monoprogra-
+mação tornou-se obsoleta.
+
+Pelo menos até o primeiro minicomputador aparecer
+— sem hardware de proteção — a multiprogramação
+não era possível. Embora o PDP-1 e o PDP-8 não tives-
+sem hardware de proteção, finalmente o PDP-11 teve,
+e esse aspecto levou à multiprogramação e por fim ao
+UNIX.
+
+Quando os primeiros microcomputadores foram
+construídos, eles usavam o chip de CPU Intel 8080, que
+não tinha proteção de hardware, então estávamos de
+volta à monoprogramação — um programa na memória
+de cada vez. Foi somente com o chip 80286 da Intel que
+o hardware de proteção foi acrescentado e a multipro-
+gramação tornou-se possível. Até hoje, muitos sistemas
+embarcados não têm hardware de proteção e executam
+apenas um único programa.
+
+Agora vamos examinar os sistemas operacionais. Os
+primeiros computadores de grande porte inicialmente
+não tinham hardware de proteção e nenhum suporte
+para multiprogramação, então sistemas operacionais
+simples eram executados neles. Esses sistemas lidavam
+com apenas um programa carregado manualmente por
+vez. Mais tarde, eles adquiriram o suporte de hardware
+e sistema operacional para lidar com múltiplos progra-
+mas ao mesmo tempo, e então capacidades de compar-
+tilhamento de tempo completas,
+
+Quando os minicomputadores apareceram pela pri-
+meira vez, eles também não tinham hardware de pro-
+teção e os programas carregados manualmente eram
+
+por exemplo, tinham algo como 4 KB de memória e ne-
+nhum hardware de proteção. Linguagens de alto nível e
+a multiprogramação eram simplesmente demais para um
+jistema tão pequeno lidar. À medida que os microcom-
+putadores evoluíram para computadores pessoais mo-
+demos, eles adquiriam o hardware necessário e então o
+software necessário para lidar com aspectos mais avan-
+gados. É provável que esse desenvolvimento vá continu-
+ar por muitos anos ainda. Outros campos talvez também
+tenham esse ciclo de reencarnação, mas na indústria dos.
+computadores ele parece girar mais rápido.
+
+Discos
+
+Os primeiros computadores de grande porte eram
+em grande parte baseados em fitas magnéticas. Eles
+liam um programa a partir de uma fita, compilavam-no
+e escreviam os resultados de volta para outra fita. Não
+havia discos e nenhum conceito de um sistema de arqui-
+vos. Isso começou a mudar quando a IBM introduziu o
+primeiro disco rígido — o RAMAC (RAndoM ACcess)
+em 1956. Ele ocupava cerca de 4 m? de espaço e podia
+armazenar 5 milhões de caracteres de 7 bits, o suficiente
+para uma foto digital de resolução média. Mas com uma
+taxa de aluguel anual de US$ 35.000, reunir um múmero
+suficiente deles para armazenar o equivalente a um rolo
+de filme tornava-se caro rapidamente. Mas por fim os
+preços baixaram e os sistemas de arquivos primitivos
+foram desenvolvidos.
+
+Representativo desses novos desenvolvimentos foi o
+CDC 6600, introduzido em 1964 e, por anos, de longe
+o computador mais rápido no mundo. Usuários podiam
+criar os chamados “arquivos permanentes” dando a
+eles nomes e esperando que nenhum outro usuário ti-
+vesse decidido que, digamos, “dados” fosse um nome
+adequado para um arquivo. Tratava-se de um diretório
+de um único nível. Por fim, computadores de grande
+porte desenvolveram sistemas de arquivos hierárquicos
+complexos, talvez culminando no sistema de arquivos
+MULTICS.
+
+informacao_nutricional.jpg
+INFORMAÇÃO NUTRICIONAL
+Porção de 20g (2 colheres de sopa)
+Quantidade por porção
+
+Valor energético 6Okcal = 252kJ
+Carboidratos
+
+Moorurasionis [ia
+0,89
+|
+ira cimentar | o |
+ED RO
+EE ES
+É +%) Valores Diários de referência com base em
+| uma dieta de 2.000kcal ou 8400KJ. Seus valores
+
+diários podem ser maiores ou menores
+dependendo de suas necessidades energéticas.
+**%VD não estabelecido.
+
+prefacio_tanenbaum.jpg
+Prefácio ..
+
+Il
+
+Introdução...
+
+O que é um sistema operacional? Re
+O sistema operacional como uma máquina
+estendida 3
+O sistema operacional como um gerenciador
+de recursos. 4
+História dos sistemas operacionais...........5
+
+A primeira geração (1945-1955): válvulas....5
+A segunda geração (1955-1965): transistores
+
+e sistemas em lote (batch) 5
+A terceira geração (1965-1980): CIs é
+multiprogramação 7
+A quarta geração (1980-presente);
+computadores pessoais. 10
+A quinta geração (1990-presente);
+computadores móveis. 3
+
+Revisão sobre hardware de
+
+computadores 14
+Processadores. 15
+Memória 17
+Discos. 19
+Dispositivos de E/S. 20
+Barramentos 2
+Inicializando o computador. 2%
+
+O zoológico dos sistemas operacionais.. 24
+
+stemas operacionais de computadores de
+grande porte. 2
+
+142
+143
+
+144
+145
+
+146
+147
+
+148
+149
+
+1.5
+
+151
+152
+153
+154
+155
+1.5.6
+157
+
+16
+16.1
+
+162
+
+163
+
+164
+165
+receita02.jpg
+BoLo DE MEL
+
+* 3 ovos
+
+*2 xícaras (chá) de farinha de
+trigo
+
+* 5 colheres (sopa) de manteiga
+
+* 1 xícara (chá) de mel
+
+*3 colherinhas (chá) de fermento
+em pó
+
+1 Bataomelea manteiga. Junte os ovos bem batidos, a fari-
+nha e o fermento.
+2. Despeje em uma forma untada com manteiga e leve ao
+
+forno (regular).
+referencias_artigo.jpg
+Referências
+
+Agarwal, Mayank; Agrawal, Himanshu; Jain, Nikunj; Kumar, Mr. Manish. “Face
+Recognition Using Principle Component Analysis, Eigenface and Neural Network”,
+Signal Acquisition and Processing. ICSAP 10, 2010.
+
+Ahonen, Timo; Hadid, Abdenour; Pietikainen, Matti. “Face Description with Local
+Binary Patterns: Application to Face Recognition”. 2006.
+
+Amos, B., Ludwiczuk, B., Satyanarayanan, M. “OpenFace: A general-purpose face
+recognition library with mobile applications”. CMU-CS-16-118, 2016.
+
+AT&T Laboratories. The Database of Faces. 1994. Disponível em:
+<https://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html>. Acesso em:
+14 ago. 2018.
+
+Belhumeur, Peter; Hespanha, Joao Pedro; Kriegman, David. “Eigenfaces vs. fisherfaces:
+recognition using class specific linear projection”, 1997.
+
+Emami, Shervin. “Face Detection and Face Recognition with Real-time Training from a
+Camera”. Disponível em: <http://shervinemami.info/faceRecognition.html>. Acesso
+em: 15 out. 2018.
+
+Gang, Y., Li, J., Ma, Q., Yu, M. and Li, J. “Illumination Variation in Face Recognition
+A Review”, Hebei University of Technology Tianjin, China, 2009.
+
+Jesus, L. et al. “Analise de Métodos de Processamento de Imagens para
+Reconhecimento Facial utilizando Fisherfaces em Imagens sob Condições
+Desfavoráveis”, 2015.
+
+Kinuta, Cristiane; Molina, Dennis; Dorneles, Eric G.; Grecchi, Fabio S.; Dias, Gilson
+T.; Santana, Jailton; Junior, Oswaldo O. F. “Estudo comparativo de algoritmos para
+Reconhecimento facial”. Universidade IMES — SP, 2013.
+
+Kovács, Zsolt Laszlo. “Redes Neurais Artificiais: fundamentos e aplicações”.
+Collegium Cognitio, 2006.
+
