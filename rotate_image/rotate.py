@@ -2,10 +2,50 @@ import numpy as np
 import cv2
 import imutils
 import pytesseract
+from pytesseract import Output
+from PIL import ImageFont, ImageDraw, Image
+from matplotlib import pyplot as plt
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 imgO= cv2.imread("../training/Images/rotate_img.jpg")
+font = "training/Fonts/calibri.ttf"
+min_cof = 30
+def writeText(text, x, y, img, font, color=(50, 50, 255), font_size = 32):
+    font = ImageFont.truetype(font, font_size)
+    img_pil = Image.fromarray(img)
+    draw = ImageDraw.Draw(img_pil)
+    draw.text((x, y - font_size), text, font = font, fill=color)
+    img = np.array(img_pil)
+    return img
 
+def showImg(img):
+    fig = plt.gcf()
+    fig.set_size_inches(5, 5)
+    plt.axis("off")
+    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    plt.show()
+
+def boundingBox(result, img, i, color=(255, 100, 0)):
+    x = result['left'][i]
+    y = result['top'][i]
+    w = result['width'][i]
+    h = result['height'][i]
+
+    cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+
+    return x, y, img
+
+def ocr_process(img, min_cof):
+    result = pytesseract.image_to_data(img, lang="eng", output_type=Output.DICT)
+    for line in result:
+        print(line, ":", result[line])
+    for i in range(0, len(result["text"])):
+        conf = int(result["conf"][i])
+        if(conf >  min_cof):
+            text = result["text"][i]
+            x, y, img = boundingBox(result, img, i, (0, 0, 255))
+            img = writeText(text, x, y, img, font, (50, 50, 255), 14)
+    return img
 
 #Determine all countours
 def find_contour(img):
@@ -84,6 +124,9 @@ def rotateImg(imgO):
     transform = cv2.warpPerspective(imgO, matrix, (w, h))
     cv2.imshow("Transform", transform)
 
+    tempI = ocr_process(transform, min_cof)
+    cv2.imshow("Img", tempI)
+
     #Processing image
     transform = cv2.resize(transform, None, fx = 1.5, fy = 1.5, interpolation=cv2.INTER_CUBIC)
 
@@ -104,6 +147,7 @@ def rotateImg(imgO):
     colorInversion = cv2.resize(colorInversion, None, fx = 0.75, fy = 0.75, interpolation=cv2.INTER_CUBIC)
 
     cv2.imshow("Color Inversion", colorInversion)
+
 
 
     cv2.waitKey()

@@ -51,7 +51,7 @@ def adaptiveThresholdGaussian(img):
     cv2.imshow("Origin", gray)
 
     adaptive_average = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 9)
-    cv2.imshow("Adaptive Average", adaptive_average)
+    cv2.imshow("Adaptive Arithmetic", adaptive_average)
 
     adaptive_gaussian = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 9)
     cv2.imshow("Adaptive Gaussian", adaptive_gaussian)
@@ -61,13 +61,13 @@ def adaptiveThresholdGaussian(img):
 
 def colorInversion(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    cv2.imshow("Origin", gray)
+    colorInversion = cv2.resize(gray, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
+    cv2.imshow("Origin", colorInversion)
 
     print(gray)
-    colorInversion = 255 - gray
+    colorInversion = 255 - colorInversion
     print(colorInversion)
 
-    colorInversion = cv2.resize(colorInversion, None, fx = 1.5, fy = 1.5, interpolation=cv2.INTER_CUBIC)
 
     cv2.imshow("Color Inversion", colorInversion)
 
@@ -130,8 +130,8 @@ def noiseRemoving(img):
     cv2.imshow("Median Blur", medianBlur)
 
     # Bilateral blur
-    bilaterBlur = cv2.bilateralFilter(gray, 9, 50, 50)
-    cv2.imshow("Bilateral Blur", bilaterBlur)
+    # bilaterBlur = cv2.bilateralFilter(gray, 9, 50, 50)
+    # cv2.imshow("Bilateral Blur", bilaterBlur)
 
     cv2.waitKey()
 
@@ -165,5 +165,37 @@ def textExample(img):
 # dilation(img9)
 # opening(img8)
 # closing(img9)
-# noiseRemoving(img10)
-textExample(img11)
+noiseRemoving(img10)
+# textExample(img11)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
